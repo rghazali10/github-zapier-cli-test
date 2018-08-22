@@ -8,7 +8,6 @@ const getAccessToken = (z, bundle) => {
       code: bundle.inputData.code,
       client_id: process.env.CLIENT_ID,
       client_secret: process.env.CLIENT_SECRET,
-      grant_type: 'authorization_code',
       state: bundle.inputData.state,
       scope: 'repo gist'
     },
@@ -61,8 +60,7 @@ module.exports = {
       params: {
         client_id: '{{process.env.CLIENT_ID}}',
         state: '{{bundle.inputData.state}}',
-        redirect_uri: '{{bundle.inputData.redirect_uri}}',
-        response_type: 'code'
+        redirect_uri: '{{bundle.inputData.redirect_uri}}'
       }
     },
     // Step 2 of the OAuth flow; Exchange a code for an access token.
@@ -72,7 +70,7 @@ module.exports = {
     // this method to tell Zapier how to refresh it.
     // refreshAccessToken: refreshAccessToken,
     // If you want Zapier to automatically invoke `refreshAccessToken` on a 401 response, set to true
-    autoRefresh: false
+    // autoRefresh: false
     // If there is a specific scope you want to limit your Zapier app to, you can define it here.
     // Will get passed along to the authorizeUrl
     // scope: 'read,write'
