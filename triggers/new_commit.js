@@ -1,4 +1,5 @@
 const utils = require('./../utils.js')
+const _ = require('lodash')
 
 // triggers on new commit with a certain tag
 const triggerNewCommit = (z, bundle) => {
@@ -8,10 +9,9 @@ const triggerNewCommit = (z, bundle) => {
   return responsePromise
     .then(response =>{ 
       var commits = z.JSON.parse(response.content);
-      Array.prototype.forEach.call(commits, commit => {
-        commit.id = commit.sha
+      return _.map(commits, commit => {
+        return {id: commit.sha};
       });
-    return commits;
     });
 };
 
