@@ -26,8 +26,8 @@ module.exports = {
 
   operation: {
     inputFields: [
-      {key: 'owner', label: 'Owner'},
-      {key:'repoKey', label: 'Repository Key'}
+      { key: 'owner', label: 'Owner' },
+      { key:'repoKey', label: 'Repository Key' }
     ],
     perform: triggerNewCommit,
 
